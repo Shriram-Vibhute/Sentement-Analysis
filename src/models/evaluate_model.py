@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import pathlib
 import logging
+import json
 import joblib
 from sklearn.ensemble import BaggingClassifier
 from sklearn.metrics import classification_report, confusion_matrix
@@ -63,14 +64,15 @@ def load_model(model_dir: str, sample_input: pd.DataFrame) -> BaggingClassifier:
 
     # Loading Model
     model_path = model_dir / "models" / "bagging_classifier.joblib"
-    logger.info(f"Loading model from {model_path}")
+    logger.info(f"Loading model from {model_path} and logging as well as registering the model")
     model = joblib.load(filename=model_path)
 
     # Logging model using MLflow
     logger.info(f"Logging model using MLflow from {model_path}")
     sample_output = model.predict(sample_input)
     signature = mlflow.models.infer_signature(sample_input, sample_output) # This is automatic signature. You can also define it manually by defining the datatype of every single feature in your dataframe.
-    mlflow.sklearn.log_model(model, signature=signature)
+    mlflow.sklearn.log_model(model, signature=signature, registered_model_name="bagging_classifier", name="bagging_classifier")
+    # NOTE: If the name of the registered model is same as previous one, then it will be considered as new version of that same model.
 
     # Why model signatures are needed?
     return model

@@ -9,7 +9,7 @@ stages:
       size: 827954
     - path: params.yaml
       hash: md5
-      md5: 81fb1a20ef3ac1509dae2dfc70715f74
+      md5: 88511b0e49d9e06aa0704b36caf6741a
       size: 545
     - path: src/data/data_ingestion.py
       hash: md5
@@ -65,7 +65,7 @@ stages:
       size: 439554
     - path: params.yaml
       hash: md5
-      md5: 81fb1a20ef3ac1509dae2dfc70715f74
+      md5: 88511b0e49d9e06aa0704b36caf6741a
       size: 545
     - path: src/features/feature_engineering.py
       hash: md5
@@ -93,7 +93,7 @@ stages:
       size: 2115939
     - path: params.yaml
       hash: md5
-      md5: 81fb1a20ef3ac1509dae2dfc70715f74
+      md5: 88511b0e49d9e06aa0704b36caf6741a
       size: 545
     - path: src/models/train_model.py
       hash: md5
@@ -102,8 +102,8 @@ stages:
     outs:
     - path: models/models/bagging_classifier.joblib
       hash: md5
-      md5: 10bd930ae9653b5566dcf268b268dd0a
-      size: 1557224
+      md5: c33ce5522517565923792f8662a94b77
+      size: 1570824
   model_evaluation:
     cmd: python src/models/evaluate_model.py
     deps:
@@ -113,5 +113,5 @@ stages:
       size: 528867
     - path: models/models/bagging_classifier.joblib
       hash: md5
-      md5: 10bd930ae9653b5566dcf268b268dd0a
-      size: 1557224
+      md5: c33ce5522517565923792f8662a94b77
+      size: 1570824
