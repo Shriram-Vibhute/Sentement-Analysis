@@ -13,7 +13,7 @@ model_training:
     min_samples_split: 5
     min_samples_leaf: 2
     estimator_max_features: 0.85
-    estimator_random_state: 40
+    estimator_random_state: 42
   
   bagging:
     n_estimators: 500
@@ -23,5 +23,5 @@ model_training:
     bootstrap_features: False 
     oob_score: False
     warm_start: False
-    bagging_random_state: 40
+    bagging_random_state: 42
     verbose: 1

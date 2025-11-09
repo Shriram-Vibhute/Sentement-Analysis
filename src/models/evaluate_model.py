@@ -74,6 +74,32 @@ def load_model(model_dir: str, sample_input: pd.DataFrame) -> BaggingClassifier:
     mlflow.sklearn.log_model(model, signature=signature, registered_model_name="bagging_classifier", name="bagging_classifier")
     # NOTE: If the name of the registered model is same as previous one, then it will be considered as new version of that same model.
 
+    client = mlflow.tracking.MlflowClient()
+    registered_model_name = "bagging_classifier"
+    model_version = client.get_latest_versions(registered_model_name, stages=["None"])[0]
+    client.set_registered_model_alias(
+        name=registered_model_name,
+        alias="staging",  # You can use: "champion", "staging", "production", etc.
+        version=model_version.version
+    )
+
+    # Set tag and description on the latest model version
+    client.set_model_version_tag(
+        name=registered_model_name,
+        version=model_version.version,
+        key="created_by",
+        value="Shriram"
+    )
+
+    # Updating the model version
+    """
+        client.update_model_version(
+            name=registered_model_name,
+            version=latest_version.version,
+            description="Latest bagging classifier model with 50 BOW features evaluated on train/test splits"
+        )
+    """
+
     # Why model signatures are needed?
     return model
 
