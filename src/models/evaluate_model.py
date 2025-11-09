@@ -168,7 +168,7 @@ def main() -> None:
     dvclive_path = home_dir / "dvclive"
 
     # Creating new experiment
-    experiment_id = mlflow.create_experiment(name="bagging_classifier_50_bow_features") # If experiment already exists then dont create it again otherwise throw error.
+    # experiment_id = mlflow.create_experiment(name="bagging_classifier_50_bow_features") # If experiment already exists then dont create it again otherwise throw error.
     experiment_id = mlflow.get_experiment_by_name(name="bagging_classifier_50_bow_features").experiment_id
 
     tags = {

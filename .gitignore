@@ -97,3 +97,6 @@ mlartifacts/
 
 # dvc temp folder
 /%TEMP%/
+
+# Bag of Words Vectorizer
+/models/vectorizers/bow.joblib
