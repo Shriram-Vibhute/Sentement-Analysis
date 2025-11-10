@@ -196,7 +196,7 @@ def main() -> None:
     dvclive_path = home_dir / "dvclive"
 
     # Creating new experiment
-    # experiment_id = mlflow.create_experiment(name="bagging_classifier_experiment") # If experiment already exists then dont create it again otherwise throw error.
+    experiment_id = mlflow.create_experiment(name="bagging_classifier_experiment") # If experiment already exists then dont create it again otherwise throw error.
     experiment_id = mlflow.get_experiment_by_name(name="bagging_classifier_experiment").experiment_id
 
     tags = {
@@ -208,10 +208,10 @@ def main() -> None:
     }   
     with mlflow.start_run(
         experiment_id=experiment_id,
-        run_name="bagging_classifier_500_bow_features_run_3",
+        run_name="bagging_classifier_100_bow_features_run_3",
         tags=tags,
         nested=False,
-        description="Model evaluation run for bagging classifier with 500 bag of words features") as run:
+        description="Model evaluation run for bagging classifier with 100 bag of words features") as run:
         # Logging tags
         mlflow.set_tags(tags)
         
