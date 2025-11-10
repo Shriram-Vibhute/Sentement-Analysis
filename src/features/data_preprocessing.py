@@ -7,13 +7,16 @@ from textblob import TextBlob
 import emoji
 import logging
 from typing import Tuple, Dict
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 
+import nltk
 # Downloading stopwords
 nltk.download('stopwords')
 # Downloading wordnet
 nltk.download('wordnet')
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+
 
 
 # Loading Dataset
