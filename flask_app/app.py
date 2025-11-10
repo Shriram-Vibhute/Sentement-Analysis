@@ -28,7 +28,7 @@ def encode_features(df):
 # Model Loading from mlflow model registry
 model_name = "bagging_classifier"
 client = mlflow.tracking.MlflowClient()
-model_version = client.get_model_version_by_alias(model_name, "production")[0].version
+model_version = client.get_latest_versions(model_name, stages=["None"])[0].version
 model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
 # Model Serving
