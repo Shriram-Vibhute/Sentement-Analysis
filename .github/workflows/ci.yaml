@@ -49,7 +49,7 @@ jobs:
       - name: Promote model to production
         if: success()
         run: |
-          python scripts/promote_model.py
+          python Scripts/promote_model.py
 
       - name: Run Flask app tests
         if: success()

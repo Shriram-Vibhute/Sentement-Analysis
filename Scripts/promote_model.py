@@ -1,6 +1,7 @@
 import os
 import mlflow
 
+
 def promote_model():
     # Set up MLflow tracking URI
     mlflow.set_tracking_uri(f'http://ec2-13-233-223-245.ap-south-1.compute.amazonaws.com:8080/')
