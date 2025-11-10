@@ -208,10 +208,10 @@ def main() -> None:
     }   
     with mlflow.start_run(
         experiment_id=experiment_id,
-        run_name="bagging_classifier_200_bow_features_run_3",
+        run_name="bagging_classifier_500_bow_features_run_3",
         tags=tags,
         nested=False,
-        description="Model evaluation run for bagging classifier with 200 bag of words features") as run:
+        description="Model evaluation run for bagging classifier with 500 bag of words features") as run:
         # Logging tags
         mlflow.set_tags(tags)
         

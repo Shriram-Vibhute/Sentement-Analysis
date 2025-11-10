@@ -9,21 +9,25 @@ def promote_model():
     client = mlflow.MlflowClient()
     model_name = "bagging_classifier"
     
-    if len(client.get_latest_versions(model_name, stages=[None])) > 1:
-        previous_version_staging = client.get_latest_versions(model_name, stages=[None])[1].version
-        client.delete_registered_model_alias(
-            name=model_name,
-            alias="production"
-        )
-        client.set_registered_model_alias(
-            name=model_name,
-            alias="archived",
-            version=previous_version_staging
-        )
-    else:
-        previous_version_staging = None
+    try: 
+        if len(client.get_model_version_by_alias(model_name, "production")) >= 1:
+            previous_version_staging = get_model_version_by_alias(model_name, "production")[0].version
+            client.delete_registered_model_alias(
+                name=model_name,
+                alias="production"
+            )
+            client.set_registered_model_alias(
+                name=model_name,
+                alias="archived",
+                version=previous_version_staging
+            )
+        else:
+            previous_version_staging = None
+    
+    except Exception as e:
+        print(f"There are no any models in Production stage.")
 
-    latest_version_staging = client.get_latest_versions(model_name, stages=[None])[0].version
+    latest_version_staging = client.get_latest_versions(model_name, stages=["None"])[0].version
     client.set_registered_model_alias(
         name=model_name,
         alias="production",

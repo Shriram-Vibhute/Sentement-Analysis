@@ -6,7 +6,7 @@ mlflow.set_tracking_uri(f'http://ec2-13-233-223-245.ap-south-1.compute.amazonaws
 from flask import Flask, request, render_template
 
 # Preprocessing
-from preprocessing import preprocessing
+from .preprocessing import preprocessing
 def normalize_text(text):
     # Since preprocessing function excepts the data in the form of dataframe
     df = pd.DataFrame(
@@ -19,7 +19,7 @@ def normalize_text(text):
     return df
 
 # Feature Engineering
-from feature_engineering import encoding_feature
+from .feature_engineering import encoding_feature
 def encode_features(df):
     vectorizer = joblib.load('models/vectorizers/bow.joblib')
     df = encoding_feature(df=df, vectorizer=vectorizer)
@@ -28,7 +28,7 @@ def encode_features(df):
 # Model Loading from mlflow model registry
 model_name = "bagging_classifier"
 client = mlflow.tracking.MlflowClient()
-model_version = client.get_latest_versions(model_name, stages=["None"])[0].version
+model_version = client.get_model_version_by_alias(model_name, "production")[0].version
 model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
 # Model Serving
