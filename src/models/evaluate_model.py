@@ -182,8 +182,8 @@ def main() -> None:
     logger = form_logger()
     logger.info(msg="Started model evaluation pipeline")
 
-    # Setting mlflow tracking uri
-    mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+    # Set up MLflow tracking URI
+    mlflow.set_tracking_uri(f'http://ec2-13-233-223-245.ap-south-1.compute.amazonaws.com:8080/')
 
     # Forming directory paths
     home_dir = pathlib.Path(__file__).parent.parent.parent
@@ -196,8 +196,8 @@ def main() -> None:
     dvclive_path = home_dir / "dvclive"
 
     # Creating new experiment
-    # experiment_id = mlflow.create_experiment(name="bagging_classifier_50_bow_features") # If experiment already exists then dont create it again otherwise throw error.
-    experiment_id = mlflow.get_experiment_by_name(name="bagging_classifier_50_bow_features").experiment_id
+    experiment_id = mlflow.create_experiment(name="bagging_classifier_500_bow_features") # If experiment already exists then dont create it again otherwise throw error.
+    experiment_id = mlflow.get_experiment_by_name(name="bagging_classifier_500_bow_features").experiment_id
 
     tags = {
         "engineering": "ML Platform",
@@ -208,10 +208,10 @@ def main() -> None:
     }   
     with mlflow.start_run(
         experiment_id=experiment_id,
-        run_name="bagging_classifier_50_bow_features_run_3",
+        run_name="bagging_classifier_500_bow_features_run_3",
         tags=tags,
         nested=False,
-        description="Model evaluation run for bagging classifier with 50 bag of words features") as run:
+        description="Model evaluation run for bagging classifier with 500 bag of words features") as run:
         # Logging tags
         mlflow.set_tags(tags)
         
