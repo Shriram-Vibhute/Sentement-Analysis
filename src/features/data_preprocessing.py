@@ -10,6 +10,11 @@ from typing import Tuple, Dict
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
+# Downloading stopwords
+nltk.download('stopwords')
+# Downloading wordnet
+nltk.download('wordnet')
+
 
 # Loading Dataset
 def load_data(data_dir: str) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, str]]:
