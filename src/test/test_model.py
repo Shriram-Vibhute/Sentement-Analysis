@@ -5,7 +5,7 @@ import pathlib
 import pandas as pd
 from sklearn.metrics import accuracy_score
 
-mlflow.set_tracking_uri("http://127.0.0.1:8080")
+mlflow.set_tracking_uri("http://ec2-65-2-178-74.ap-south-1.compute.amazonaws.com:8080/")
 
 home_dir = pathlib.Path(__file__).parent.parent.parent
 data_path = home_dir / "data" / "features" / "test.csv"

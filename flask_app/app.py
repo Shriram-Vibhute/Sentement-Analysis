@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import joblib
 import mlflow
-mlflow.set_tracking_uri(f'http://ec2-13-233-223-245.ap-south-1.compute.amazonaws.com:8080/')
+mlflow.set_tracking_uri(f'http://ec2-65-2-178-74.ap-south-1.compute.amazonaws.com:8080/')
 from flask import Flask, request, render_template
 
 # Preprocessing

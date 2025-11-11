@@ -8,7 +8,7 @@ class TestModelLoading(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Set up MLflow tracking URI
-        mlflow.set_tracking_uri(f'http://ec2-13-233-223-245.ap-south-1.compute.amazonaws.com:8080/')
+        mlflow.set_tracking_uri(f'http://ec2-65-2-178-74.ap-south-1.compute.amazonaws.com:8080/')
 
         # Load the new model from MLflow model registry
         cls.new_model_name = "bagging_classifier"
@@ -23,9 +23,9 @@ class TestModelLoading(unittest.TestCase):
         cls.holdout_data = pd.read_csv('data/features/test.csv').dropna()
 
     @staticmethod
-    def get_latest_model_version(model_name, stage="Staging"):
+    def get_latest_model_version(model_name, stage="None"):
         client = mlflow.MlflowClient()
-        latest_version = client.get_latest_versions(model_name, stages=["None"])
+        latest_version = client.get_latest_versions(model_name, stages=[stage])
         return latest_version[0].version if latest_version else None
 
     def test_model_loaded_properly(self):
