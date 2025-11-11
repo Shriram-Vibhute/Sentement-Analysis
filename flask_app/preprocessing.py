@@ -6,6 +6,9 @@ from textblob import TextBlob
 import emoji
 import logging
 from typing import Tuple, Dict
+
+# Downloading the stopwords and wordnet - Error while running the docker container
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
