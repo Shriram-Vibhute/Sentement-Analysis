@@ -183,7 +183,7 @@ def main() -> None:
     logger.info(msg="Started model evaluation pipeline")
 
     # Set up MLflow tracking URI
-    mlflow.set_tracking_uri(f'http://ec2-13-234-110-125.ap-south-1.compute.amazonaws.com:8080/')
+    mlflow.set_tracking_uri(f'http://ec2-15-206-163-194.ap-south-1.compute.amazonaws.com:8080')
 
     # Forming directory paths
     home_dir = pathlib.Path(__file__).parent.parent.parent
