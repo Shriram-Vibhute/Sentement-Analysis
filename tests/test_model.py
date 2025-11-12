@@ -8,7 +8,7 @@ class TestModelLoading(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Set up MLflow tracking URI
-        mlflow.set_tracking_uri(f'http://ec2-65-2-178-74.ap-south-1.compute.amazonaws.com:8080/')
+        mlflow.set_tracking_uri(f'http://ec2-3-109-139-159.ap-south-1.compute.amazonaws.com:8080/')
 
         # Load the new model from MLflow model registry
         cls.new_model_name = "bagging_classifier"
