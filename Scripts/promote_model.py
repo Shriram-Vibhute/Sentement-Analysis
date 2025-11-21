@@ -4,7 +4,7 @@ import mlflow
 
 def promote_model():
     # Set up MLflow tracking URI
-    mlflow.set_tracking_uri(f'http://ec2-15-206-163-194.ap-south-1.compute.amazonaws.com:8080')
+    mlflow.set_tracking_uri(f'http://ec2-13-232-128-22.ap-south-1.compute.amazonaws.com:8080/')
 
     # Get the latest version in staging
     client = mlflow.MlflowClient()
